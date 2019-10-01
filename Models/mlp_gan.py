@@ -1,9 +1,9 @@
+from __future__ import print_function, division
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import glob
-from __future__ import print_function, division
 from music21 import converter, instrument, note, chord, stream
 from keras.layers import Input, Dense, Reshape, Dropout, CuDNNLSTM, Bidirectional
 from keras.layers import BatchNormalization, Activation, ZeroPadding2D
@@ -16,7 +16,7 @@ def get_notes():
     """ Get all the notes and chords from the midi files """
     notes = []
 
-    for file in glob.glob("Pokemon MIDIs/*.mid"):
+    for file in glob.glob("../Pokemon MIDIs/*.mid"):
         midi = converter.parse(file)
 
         print("Parsing %s" % file)
@@ -260,7 +260,7 @@ class GAN():
         pred_notes = [x*242+242 for x in predictions[0]]
         pred_notes = [int_to_note[int(x)] for x in pred_notes]
         
-        create_midi(pred_notes, 'gan_final')
+        create_midi(pred_notes, 'gan_final_2000_epoches')
         
     def plot_loss(self):
         plt.plot(self.disc_loss, c='red')
@@ -274,4 +274,4 @@ class GAN():
 
 if __name__ == '__main__':
   gan = GAN(rows=100)    
-  gan.train(epochs=5000, batch_size=32, sample_interval=1)
+  gan.train(epochs=2000, batch_size=64, sample_interval=1)
