@@ -16,7 +16,7 @@ def get_notes():
     """ Get all the notes and chords from the midi files """
     notes = []
 
-    for file in glob.glob("../Pokemon MIDIs/*.mid"):
+    for file in glob.glob("../Pokemon GSC MIDIs/*.mid"):
         midi = converter.parse(file)
 
         print("Parsing %s" % file)
@@ -274,4 +274,4 @@ class GAN():
 
 if __name__ == '__main__':
   gan = GAN(rows=100)    
-  gan.train(epochs=2000, batch_size=64, sample_interval=1)
+  gan.train(epochs=100, batch_size=64, sample_interval=1)
