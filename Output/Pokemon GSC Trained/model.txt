@@ -1,0 +1,22 @@
+This is the definition used to create the model in this folder
+
+def create_network(network_input, n_notes, n_offset, n_duration):
+    """ create the structure of the neural network """
+    input = Input(shape=(network_input.shape[1], network_input.shape[2]))
+    lstm_1 = CuDNNLSTM(512, input_shape=(network_input.shape[1], network_input.shape[2]), return_sequences=True)(input)
+    dropout_1 = Dropout(0.3)(lstm_1)
+    lstm_2 = Bidirectional(CuDNNLSTM(512, return_sequences=True))(dropout_1)
+    dropout_2 = Dropout(0.3)(lstm_2)
+    lstm_3 = Bidirectional(CuDNNLSTM(512))(dropout_2)
+    dropout_3 = Dropout(0.3)(lstm_3)
+    dense_1 = Dense(128)(dropout_3)
+    dropout_4 = Dropout(0.3)(dense_1)
+    dense_2 = Dense(128)(dropout_4)
+    dropout_5 = Dropout(0.3)(dense_2)
+    output_notes = Dense(n_notes, activation='softmax')(dropout_5)
+    output_offset = Dense(n_offset, activation='softmax')(dropout_5)
+    output_duration = Dense(n_duration, activation='softmax')(dropout_5)
+    
+    model = Model(inputs=input, outputs=[output_notes, output_offset, output_duration])
+    model.compile(loss=['categorical_crossentropy', 'categorical_crossentropy', 'categorical_crossentropy'], optimizer='adam', loss_weights=[1., 1., 1.])
+    return model
