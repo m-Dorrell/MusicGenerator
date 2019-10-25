@@ -18,12 +18,12 @@ We also looked into using a GAN Model, however we found that the discriminator c
 
 This system has a specific structure that allows all apps to be relatively self-contained and to streamline the process for the user:
 
-**Best Samples** - Some generated songs that are our favourites.
-**Converter** - Relates to the ChangeInstrument notebook and includes folders for input/output of files
-**MIDIs** - Holds all of the MIDI files used for training
-**Models** - Contains all of the notebooks
-**Output** - Where the RNN Model generates music, saves checkpoints. Also where the pretrained model exists.
-**Similarity** - Relates to the SimilarityTest notebook and includes folders for comparing files
+**Best Samples** - Some generated songs that are our favourites.<br>
+**Converter** - Relates to the ChangeInstrument notebook and includes folders for input/output of files.<br>
+**MIDIs** - Holds all of the MIDI files used for training.<br>
+**Models** - Contains all of the notebooks.<br>
+**Output** - Where the RNN Model generates music, saves checkpoints. Also where the pretrained model exists.<br>
+**Similarity** - Relates to the SimilarityTest notebook and includes folders for comparing files.<br>
 
 *Note:* Included in the /Models folder are the original 'lstm' and 'mlp_gan' [code](https://github.com/corynguyen19/midi-lstm-gan) that this project was based on.
 
