@@ -38,9 +38,9 @@ This system has a specific structure that allows all apps to be relatively self-
 5. Construct the RNN Model
 6. Either train the model from scratch or load the pretrained model at the selected epoch
 7. Generate music:
-  * One song at a time
-  * An album of random songs at once
-  * Generate songs using the models from all checkpoints of the training
+    * One song at a time
+    * An album of random songs at once
+    * Generate songs using the models from all checkpoints of the training
 
 #### SimilarityTest
 
